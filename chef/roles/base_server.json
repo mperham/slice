@@ -1,9 +1,27 @@
 {
   "name": "base_server",
   "default_attributes": { },
-  "override_attributes": { },
+  "override_attributes": {
+    "mysql": {
+      "server_root_password": "password",
+      "server_debian_password": "password",
+      "server_repl_password": "password",
+      "bind_address": "localhost",
+      "tunable": {
+        "key_buffer": "8M"
+      }
+    },
+    "nginx": {
+      "version": "0.7.67"
+    },
+    "wordpress": {
+      "db": {
+        "password": "blogpwd"
+      }
+    }
+  },
   "json_class": "Chef::Role",
   "description": "Nothing to see here",
   "chef_type": "role",
-  "recipes": "base"
+  "recipes": ["base", "mysql::server", "nginx"]
 }

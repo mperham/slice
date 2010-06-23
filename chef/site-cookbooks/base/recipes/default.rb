@@ -43,3 +43,4 @@ file '/etc/sudoers.d/README' do
 end
 
 create_user 'mike'
+package 'git-core'
