@@ -25,11 +25,11 @@ def create_user(u)
   
   ruby_block "sudo for #{u}" do
     block do
-      File.open("/etc/sudoers.d/#{u}") do |f|
+      ::File.open("/etc/sudoers.d/#{u}") do |f|
         f.write("#{u} ALL=(ALL) NOPASSWD: ALL")
       end
     end
-    only_if { !File.exist?("/etc/sudoers.d/#{u}") }
+    only_if { !::File.exist?("/etc/sudoers.d/#{u}") }
   end
 end
 
