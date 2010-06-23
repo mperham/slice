@@ -1,0 +1,9 @@
+{
+  "name": "base_server",
+  "default_attributes": { },
+  "override_attributes": { },
+  "json_class": "Chef::Role",
+  "description": "Nothing to see here",
+  "chef_type": "role",
+  "recipes": "base"
+}
