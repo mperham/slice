@@ -34,4 +34,8 @@ def create_user(u)
   end
 end
 
+file '/etc/sudoers.d/README' do
+  action :delete
+end
+
 create_user 'mike'
