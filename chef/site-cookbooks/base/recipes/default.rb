@@ -1,15 +1,27 @@
-user 'mike' do
-  home '/home/mike'
+
+def create_user(u)
+  user u do
+    home "/home/#{u}"
+  end
+
+  directory "/home/#{u}" do
+    owner u
+    group u
+    mode "0755"
+  end
+
+  directory "/home/#{u}/.ssh" do
+    owner u
+    group u
+    mode '0700'
+  end  
+
+  remote_file "/home/#{u}/.ssh/authorized_keys2" do
+    source "authorized_keys2.#{u}"
+    owner u
+    group u
+    mode '0600'
+  end
 end
 
-directory '/home/mike/.ssh' do
-  owner 'mike'
-  group 'mike'
-  mode '0700'
-end  
-
-remote_file '/home/mike/.ssh/authorized_keys2' do
-  owner 'mike'
-  group 'mike'
-  mode '0600'
-end
+create_user 'mike'
