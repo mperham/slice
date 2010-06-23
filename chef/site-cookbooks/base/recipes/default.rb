@@ -2,6 +2,7 @@
 def create_user(u)
   user u do
     home "/home/#{u}"
+    shell '/bin/bash'
   end
 
   directory "/home/#{u}" do
