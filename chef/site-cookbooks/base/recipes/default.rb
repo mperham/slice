@@ -27,8 +27,9 @@ def create_user(u)
   ruby_block "sudo for #{u}" do
     block do
       ::File.open("/etc/sudoers.d/#{u}", 'w') do |f|
-        f.write("#{u} ALL=(ALL) NOPASSWD: ALL")
+        f.write("#{u} ALL=(ALL) NOPASSWD: ALL\n")
       end
+      FileUtils.chmod '0440', "/etc/sudoers.d/#{u}"
     end
     only_if { !::File.exist?("/etc/sudoers.d/#{u}") }
   end
