@@ -16,11 +16,20 @@ def create_user(u)
     mode '0700'
   end  
 
-  remote_file "/home/#{u}/.ssh/authorized_keys2" do
+  cookbook_file "/home/#{u}/.ssh/authorized_keys2" do
     source "authorized_keys2.#{u}"
     owner u
     group u
     mode '0600'
+  end
+  
+  ruby_block "sudo for #{u}" do
+    block do
+      File.open("/etc/sudoers.d/#{u}") do |f|
+        f.write("#{u} ALL=(ALL) NOPASSWD: ALL")
+      end
+    end
+    only_if { !File.exist?("/etc/sudoers.d/#{u}"
   end
 end
 
