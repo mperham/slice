@@ -24,4 +24,4 @@ gem install chef -v '>= 0.9.0' --no-rdoc --no-ri
 
 # Add /var/lib/gems/1.9.1/bin to /etc/environmnent
 
-/var/lib/gems/1.9.1/bin/chef-solo -s ~/slice/solo.rb -j ~/slice/node.json
+/var/lib/gems/1.9.1/bin/chef-solo -c ~/slice/solo.rb -j ~/slice/node.json
