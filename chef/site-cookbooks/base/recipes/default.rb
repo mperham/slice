@@ -23,16 +23,19 @@ def create_user(u)
     group u
     mode '0600'
   end
-  
+
   ruby_block "sudo for #{u}" do
     block do
       ::File.open("/etc/sudoers.d/#{u}", 'w') do |f|
         f.write("#{u} ALL=(ALL) NOPASSWD: ALL\n")
       end
-      FileUtils.chmod 0440, "/etc/sudoers.d/#{u}"
     end
     only_if { !::File.exist?("/etc/sudoers.d/#{u}") }
   end
+
+  file "/etc/sudoers.d/#{u}" do
+    mode '0440'
+  end    
 end
 
 file '/etc/sudoers.d/README' do
