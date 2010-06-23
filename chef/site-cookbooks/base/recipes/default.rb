@@ -29,7 +29,7 @@ def create_user(u)
         f.write("#{u} ALL=(ALL) NOPASSWD: ALL")
       end
     end
-    only_if { !File.exist?("/etc/sudoers.d/#{u}"
+    only_if { !File.exist?("/etc/sudoers.d/#{u}") }
   end
 end
 
