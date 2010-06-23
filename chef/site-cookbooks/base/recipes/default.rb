@@ -25,7 +25,7 @@ def create_user(u)
   
   ruby_block "sudo for #{u}" do
     block do
-      ::File.open("/etc/sudoers.d/#{u}") do |f|
+      ::File.open("/etc/sudoers.d/#{u}", 'w') do |f|
         f.write("#{u} ALL=(ALL) NOPASSWD: ALL")
       end
     end
