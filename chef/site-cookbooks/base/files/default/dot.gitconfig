@@ -1,0 +1,13 @@
+[user]
+        name = Mike Perham
+        email = mperham@gmail.com
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        interactive = auto
+[alias]
+        ci=commit
+        br=branch
+        co=checkout
+        st=status

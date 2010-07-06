@@ -45,3 +45,17 @@ end
 create_user 'mike'
 package 'git-core'
 package 'gitosis'
+
+cookbook_file "/home/mike/.gemrc" do
+  source "dot.gemrc"
+  owner "mike"
+  group "mike"
+  mode "644"
+end
+
+cookbook_file "/home/mike/.gitconfig" do
+  source "dot.gitconfig"
+  owner "mike"
+  group "mike"
+  mode "644"
+end
