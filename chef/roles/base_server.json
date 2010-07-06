@@ -1,6 +1,7 @@
 {
   "name": "base_server",
-  "default_attributes": { },
+  "default_attributes": {
+  },
   "override_attributes": {
     "mysql": {
       "server_root_password": "password",
@@ -11,17 +12,20 @@
         "key_buffer": "8M"
       }
     },
-    "nginx": {
-      "version": "0.7.67"
+    "apache": {
+      "listen_ports": ["80"],
+      "contact": "mperham+siteadmin@gmail.com"
     },
     "wordpress": {
       "db": {
         "password": "blogpwd"
-      }
+      },
+      "version": "3.0",
+      "checksum": "73414effa3dd10a856b0e8e9a4726e92288fad7e43723106716b72de5f3ed91c"
     }
   },
   "json_class": "Chef::Role",
   "description": "Nothing to see here",
   "chef_type": "role",
-  "recipes": ["base", "mysql::server", "nginx"]
+  "recipes": ["base", "mysql::server", "base::wordpress"]
 }
